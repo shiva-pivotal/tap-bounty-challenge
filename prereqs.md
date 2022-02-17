@@ -23,4 +23,6 @@ az aks create \
 Standard_D4_v3 == 4 vCPUS / 16GB Memory
 ```
 4*5 == 20 vCPUS
-16*5 == 80GB Meory
+16*5 == 80GB Memory
+
+- If Installing from Windows, it's highly recommend to leverage WSL2 https://docs.microsoft.com/en-us/windows/wsl/install , it makes your job much easier.

@@ -49,20 +49,87 @@ Provide following user inputs to set environments variables into commands and ex
 * registry_user - registry server user
 * registry_password - registry server user
 
-<!-- /* cSpell:disable */ -->
+Create a basic tap-values.yaml. Here is a sample:
 ```
-export registry_server=<registry server uri>
-export registry_user=<registry_user>
-export registry_password=<registry_password>
+profile: full
+ceip_policy_disclosed: true # Installation fails if this is set to 'false'
+buildservice:
+  kp_default_repository: "harbor.wesleyreisz.com/tap/build-service"
+  kp_default_repository_username: "your-registry-username"
+  kp_default_repository_password: "your-registry-username"
+  tanzunet_username: "example@vmware.com"
+  tanzunet_password: "tanzu-net-password"
+  descriptor_name: "tap-1.0.0-full"
+  enable_automatic_dependency_updates: true
+supply_chain: basic
 
-#create a tap-values.yaml
+ootb_supply_chain_basic:
+  registry:
+    server: "harbor.wesleyreisz.com"
+    repository: "workloads/supply-chain"
+  gitops:
+    ssh_secret: ""
 
+contour:
+  envoy:
+    service:
+      type: LoadBalancer
 
+learningcenter:
+  ingressDomain: "learningcenter.wesleyreisz.com"
+
+tap_gui:
+  service_type: ClusterIP
+  ingressEnabled: "true"
+  ingressDomain: "tap.wesleyreisz.com"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.tap.wesleyreisz.com
+    catalog:
+      locations:
+        - type: url
+          target: https://github.com/wesreisz/tap-blank-catalog/blob/main/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.tap-build.wesleyreisz.com
+      cors:
+        origin: http://tap-gui.tap-build.wesleyreisz.com
+
+metadata_store:
+  app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+grype:
+  namespace: "workload" # (optional) Defaults to default namespace.
+  targetImagePullSecret: "workload"
+
+cnrs:
+  provider: local
+  domain_name: tap.wesleyreisz.com 
+  domain_template: "{{.Name}}.{{.Domain}}"
+
+# e.g. App Accelerator specific values go under its name
+accelerator:
+  server:
+    service_type: "ClusterIP"
+```
+
+Apply the yaml file and install tap
+```
 tanzu package install tap -p tap.tanzu.vmware.com -v 1.0.1 --values-file tap-values.yaml -n tap-install
-tanzu package installed get tap -n tap-install
-
-#check all cluster package installed succesfully
-tanzu package installed list -A
-
 ```
+
+Check all cluster package installed succesfully
+```
+tanzu package installed list -A
+```
+
+
+Got back and add the domains to your dns provider:
+```
+ tap.wesleyreisz.com
+ tap-gui.tap.wesleyreisz.com
+ learningcenter.wesleyreisz.com
+```
+
+NOTE: Learning center and tap require wildcard DNS entries.
+
 

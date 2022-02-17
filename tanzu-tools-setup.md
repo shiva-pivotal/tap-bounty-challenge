@@ -69,7 +69,7 @@ tanzu plugin list
   services            Discover Service Types and manage Service Instances (ALPHA)        Standalone             v0.1.1   installed   
 ```
 
-If you don't, installed the plugins. 
+If you don't, install the plugins and recheck. 
 
 ```
 cd $HOME

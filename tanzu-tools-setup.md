@@ -2,7 +2,7 @@
 
 ### <a id=tanzu-essential> </a> Step 1: Install tanzu cluster essentials 
 
-Once you have an empty AKS cluster, you will need to install the essential cluster tools into it. You're basically install the kapp-controller and the secrets manager.
+Once you have an empty AKS cluster, you will need to install the essential cluster tools into it. You're basically install the kapp and secrets controller.
 
 Download the cluster-essential tar and install it. Provide following user inputs into commands and execute them to install tanzu cluster essentials and tanzu cli into your machine.. 
 

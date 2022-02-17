@@ -9,10 +9,9 @@
 
 **[Prerequisites](prereqs.md)**
 
-[0. Prerequisites](prereqs.md)<br>
 [1. Azure Setup](azure-setup.md)<br>
-[1. Install Tanzu tools](tanzu-tools-setup.md)<br>
-[2. Install TAP](tap-install.md)<br>
-[3. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
 
 

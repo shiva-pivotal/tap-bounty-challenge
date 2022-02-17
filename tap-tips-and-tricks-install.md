@@ -2,5 +2,5 @@
 
 - Extract friendly error messages 
 - Setup DNS
-- Setup Contour
+- Setup Contour: kubectl get svc -n tanzu-system-ingress
 - Troubleshoot catalog errors

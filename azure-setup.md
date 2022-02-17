@@ -1,14 +1,18 @@
-# Azure Setup
+## Step 1: Create an AKS Cluster
+Create an AKS cluster. Make sure the Azure CLI is installed. The following commands will log you in and then create a cluster (sized for tap). For additional information on the requirements for TAP, refer to the installation docs.
 
-# Create an cluster AKS to install tap on
 Login to Azure
 ```
 az login
 az account set 
   --subscription 0ee6e882-35d9-4b20-9126-XXXXXXXXX
-Check the versions of k8s available and the quotas for your nodes. You may need to request
-a quota increase if you don’t have enough in a specific  family.
+```
+
+Check the versions of k8s available and the quotas for your nodes. You may need to request a quota increase if you don’t have enough in a specific family.
+
+```
 az aks get-versions --location ${AKS_CLUSTER_LOCATION} -o table 
+
 az vm list-usage --location ${AKS_CLUSTER_LOCATION}  -o table
 ```
 
@@ -36,6 +40,8 @@ az aks create \
  --enable-addons monitoring \
  --kubernetes-version ${AKS_CLUSTER_VERSION} 
 ```
+
+ ** NOTE: Standard_D4_v3 will give you 4 vCPUs and 16GB of memory (or with 5 nodes a total of 20 vCPUs and 80GB of RAM on the cluster). **
 
 Get Credentials
 ```

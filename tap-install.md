@@ -1,72 +1,18 @@
 # Tanzu Application Platform - Install
 
-This is a quickstart quick for TAP on AKS. Call it the "No Nonsense Guide to get up and Running with a TAP Cluster on AKS". It assumes prior knowledge of TAP. Where additional overview information is needed, please refer to the installation docs. This is to quickly get a cluster and establish a repeatable pattern.
-
-
-
 ## Overview of the Install Steps
-1. [Create an AKS Cluster](#aks-cluster)
-2. [Setup Tanzu Application Platform Tools](#tanzu-essential)
-3. [Setup Tanzu Application Platform package repository](#tap-package-repo)
-4. [Setup Tanzu Application Platform Install](#tap-full-profile-install)
-5. [App Deployment](#tap-sample-app)
+1. [Setup Tanzu Application Platform Tools](#tanzu-essential)
+2. [Install Tanzu CLI and Configure kubectl Plugins](#tanzu-cli)
+2. [Setup Tanzu Application Platform package repository](#tap-package-repo)
+3. [Setup Tanzu Application Platform Install](#tap-full-profile-install)
+4. [App Deployment](#tap-sample-app)
 
-## Step 1: Create an AKS Cluster
-<a id=aks-cluster> </a> 
-Create an AKS cluster. Make sure the Azure CLI is installed. The following commands will log you in and then create a cluster (sized for tap). For additional information on the requirements for TAP, refer to the installation docs.
 
-Login to Azure
-```
-az login
-az account set 
-  --subscription 0ee6e882-35d9-4b20-9126-XXXXXXXXX
-```
-
-Check the versions of k8s available and the quotas for your nodes. You may need to request a quota increase if you don’t have enough in a specific family.
-
-```
-az aks get-versions --location ${AKS_CLUSTER_LOCATION} -o table 
-
-az vm list-usage --location ${AKS_CLUSTER_LOCATION}  -o table
-```
-
-Set some variables to use:
-```
-export AKS_RESOURCE_GROUP="tap-cluster-2-resourcegroup"
-export AKS_CLUSTER_NAME="tap-cluster-2"
-export AKS_CLUSTER_LOCATION="eastus2"
-export AKS_CLUSTER_VERSION="1.23.3"
-```
-
-Create the group and aks cluster
-```
-az group create -l ${AKS_CLUSTER_LOCATION} -n ${AKS_RESOURCE_GROUP}
-```
-
-```
-az aks create \
- --resource-group ${AKS_RESOURCE_GROUP} \
- --name ${AKS_CLUSTER_NAME} \
- --node-count 5 \
- --generate-ssh-keys \
- --load-balancer-sku standard \
- --node-vm-size Standard_D4_v3 \
- --enable-addons monitoring \
- --kubernetes-version ${AKS_CLUSTER_VERSION} 
-```
-
- ** NOTE: Standard_D4_v3 will give you 4 vCPUs and 16GB of memory (or with 5 nodes a total of 20 vCPUs and 80GB of RAM on the cluster). **
-
-Get Credentials
-```
-az aks get-credentials --resource-group ${AKS_RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME}
-```
-
-### <a id=tanzu-essential> </a> Step 2: Install tanzu cluster essentials 
+### <a id=tanzu-essential> </a> Step 2: Install Tanzu cluster essentials 
 Installing Cluster Essentials must happen on each new cluster. If you previously downloaded it, cd into that direction and run './install.sh`.
 
 
-### <a id=tanzu-essential> </a> Step 2: Install tanzu cluster essentials and tanzu cli
+### <a id=tanzu-cli> </a> Step 2: Install Tanzu CLI and Configure kubectl Plugins
 
 Provide following user inputs into commands and execute them to install tanzu cluster essentials and tanzu cli into your mac machine. 
 

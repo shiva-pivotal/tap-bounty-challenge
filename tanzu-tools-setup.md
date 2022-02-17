@@ -27,10 +27,14 @@ pivnet login --api-token=<Tanzu-Net-API-Token>
 pivnet download-product-files --product-slug='tanzu-cluster-essentials' --release-version='1.0.0' --product-file-id=1105820
 mkdir $HOME/tanzu-cluster-essentials
 tar -xvf tanzu-cluster-essentials-darwin-amd64-1.0.0.tgz -C $HOME/tanzu-cluster-essentials
+```
 
+If you already have it downloaded, just install:
+```
 cd $HOME/tanzu-cluster-essentials
 ./install.sh
 ```
+
 
 Check that there are two controllers installed:
 ```

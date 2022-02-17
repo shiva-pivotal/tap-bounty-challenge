@@ -1,4 +1,4 @@
-## Step 1: Create an AKS Cluster
+## Create an AKS Cluster
 Create an AKS cluster. Make sure the Azure CLI is installed. The following commands will log you in and then create a cluster (sized for tap). For additional information on the requirements for TAP, refer to the installation docs.
 
 Login to Azure

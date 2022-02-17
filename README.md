@@ -2,11 +2,6 @@
 
 #### Workshop content for creating a Tanzu Application Platrom installation and deployement an app in Azure 
 
-
-## Table of Contents
-
-[Overview](overview.md)<br>
-
 **[Prerequisites](prereqs.md)**
 
 [1. Azure Setup](azure-setup.md)<br>

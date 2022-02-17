@@ -1,0 +1,49 @@
+profile: full
+ceip_policy_disclosed: true # Installation fails if this not set to `true`
+buildservice:
+  kp_default_repository: "index.docker.io/<tap-domain-name>/build-service"
+  kp_default_repository_username: ""
+  kp_default_repository_password: ""
+  tanzunet_username: ""
+  tanzunet_password: ""
+  descriptor_name: "tap-1.0.0-full"
+  enable_automatic_dependency_updates: true
+supply_chain: basic
+
+ootb_supply_chain_basic:
+  registry:
+    server: "index.docker.io"
+    repository: "<docker-hub-repo>"
+  gitops:
+    ssh_secret: ""
+
+learningcenter:
+  ingressDomain: "learningcenter.tap-bounty.<tap-domain-name>"
+
+tap_gui:
+  service_type: LoadBalancer
+  ingressEnabled: "true"
+  ingressDomain: "tap-bounty.<tap-domain-name>"
+  app_config:
+    app:
+      baseUrl: http://tap-gui.tap-bounty.<tap-domain-name>
+    catalog:
+      locations:
+        - type: url
+          target: GIT-CATALOG-URL/catalog-info.yaml
+    backend:
+      baseUrl: http://tap-gui.tap-bounty.<tap-domain-name>
+      cors:
+        origin: http://tap-gui.tap-bounty.<tap-domain-name>
+
+metadata_store:
+  app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
+
+grype:
+  namespace: "workload" # (optional) Defaults to default namespace.
+  targetImagePullSecret: "workload"
+ 
+contour:
+  envoy:
+    service:
+      type: LoadBalancer

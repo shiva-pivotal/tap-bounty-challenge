@@ -2,45 +2,29 @@
 
 This is a quickstart quick for TAP on AKS. Call it the "No Nonsense Guide to get up and Running with a TAP Cluster on AKS". It assumes prior knowledge of TAP. Where additional overview information is needed, please refer to the installation docs. This is to quickly get a cluster and establish a repeatable pattern.
 
-## Prerequisites
-Before deploying VMware Tanzu Application Platform, ensure that the following are set up.
 
-## Azure Setup
 
-The following software needs to be available in the environment where you will be installing your Tanzu Application Platform on Azure
-- Azure Account with proper permissions to provision AKS cluster
-- Disable agentpool Autoscaling
-- Set Node pool capacity to the following:
-- 10 Node count
-- VM Size: Standard DS2 v2 (2 vcpus, 7 GiB memory)
-- Cores : 20 vCPUs
-- Memory: 70 GiB
-- this is encapsulated in the script
+## Overview of the Install Steps
+1. [Create an AKS Cluster](#taks-cluster)
+2. [Setup Tanzu Application Platform Tools](#tanzu-essential)
+3. [Setup Tanzu Application Platform package repository](#tap-package-repo)
+4. [Setup Tanzu Application Platform Install](#tap-full-profile-install)
+5. [App Deployment](#tap-sample-app)
 
-```
-az aks create \
- --resource-group ${AKS_RESOURCE_GROUP} \
- --name ${AKS_CLUSTER_NAME} \
- --node-count 5 \
- --generate-ssh-keys \
- --load-balancer-sku standard \
- --node-vm-size Standard_D4_v3 \
- --enable-addons monitoring \
- --kubernetes-version ${AKS_CLUSTER_VERSION} 
-Standard_D4_v3 == 4 vCPUS / 16GB Memory
-4*5 == 20 vCPUS
-16*5 == 80GB Meory
-```
+## Step 1: Create an AKS Cluster
+<a id=aks-cluster> </a> 
+Create an AKS cluster. Make sure the Azure CLI is installed. The following commands will log you in and then create a cluster (sized for tap). For additional information on the requirements for TAP, refer to the installation docs.
 
-### Create an cluster AKS to install tap on
 Login to Azure
 ```
 az login
 az account set 
   --subscription 0ee6e882-35d9-4b20-9126-XXXXXXXXX
-Check the versions of k8s available and the quotas for your nodes. You may need to request
-a quota increase if you don’t have enough in a specific  family.
+
+Check the versions of k8s available and the quotas for your nodes. You may need to request a quota increase if you don’t have enough in a specific family.
+
 az aks get-versions --location ${AKS_CLUSTER_LOCATION} -o table 
+
 az vm list-usage --location ${AKS_CLUSTER_LOCATION}  -o table
 ```
 
@@ -69,21 +53,14 @@ az aks create \
  --kubernetes-version ${AKS_CLUSTER_VERSION} 
 ```
 
+ ** NOTE: Standard_D4_v3 will give you 4 vCPUs and 16GB of memory (or with 5 nodes a total of 20 vCPUs and 80GB of RAM on the cluster). **
+
 Get Credentials
 ```
 az aks get-credentials --resource-group ${AKS_RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME}
 ```
 
-## Overview of the Install Steps
-
-The following provides an overview of the major steps necessary to deploy Tanzu Application Platform. Each steps links to the section for detailed information.
-
-1. [Setup Tanzu Application Platform Tools](#tanzu-essential)
-2. [Setup Tanzu Application Platform package repository](#tap-package-repo)
-3. [Setup Tanzu Application Platform Install](#tap-full-profile-install)
-4. [App Deployment](#tap-sample-app)
-
-### <a id=tanzu-essential> </a> Step 1: Install tanzu cluster essentials and tanzu cli
+### <a id=tanzu-essential> </a> Step 2: Install tanzu cluster essentials and tanzu cli
 
 Provide following user inputs into commands and execute them to install tanzu cluster essentials and tanzu cli into your mac machine. 
 
@@ -137,7 +114,7 @@ cd $HOME
 ```
 
 <!-- /* cSpell:enable */ -->
-### <a id=tap-package-repo> </a>Step 2: Add the Tanzu Application Platform package repository
+### <a id=tap-package-repo> </a>Step 3: Add the Tanzu Application Platform package repository
 
 Execute following commands to add TAP package. 
 
@@ -165,7 +142,7 @@ tanzu package available list --namespace tap-install
 
 <!-- /* cSpell:enable */ -->
 
-### <a id=tap-full-profile-install> </a>Step 3: Install Tanzu Application Platform full profile
+### <a id=tap-full-profile-install> </a>Step 4: Install Tanzu Application Platform full profile
 
 Provide following user inputs to set environments variables into commands and execute them to install build profile
 
@@ -191,7 +168,7 @@ tanzu package installed list -A
 ```
 <!-- /* cSpell:enable */ -->
 
-### <a id=tap-sample-app>Step 4: Deploy Sample application 
+### <a id=tap-sample-app>Step 5: Deploy Sample application 
 See the steps to deploy and test [sample application](#tap-sample-app). You can refer [Deploy Application documentation](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-getting-started.html) for further details.
 
 Execute following command to see the demo of sample app deployment into Tanzu Application Platform

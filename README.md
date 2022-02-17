@@ -4,7 +4,7 @@
 
 **[Prerequisites](prereqs.md)**
 
-[1. Azure Setup](azure-setup.md)<br>
+[1. Create an AKS Cluster](azure-setup.md)<br>
 [2. Install Tanzu tools](tanzu-tools-setup.md)<br>
 [3. Install TAP](tap-install.md)<br>
 [4. Sample App](sample-app.md)<br>

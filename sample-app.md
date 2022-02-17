@@ -1,4 +1,13 @@
-### Deploy Sample application 
+## Deploy Sample application 
+
+**[Prerequisites](prereqs.md)**
+
+[1. Create an AKS Cluster](azure-setup.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Sample App](sample-app.md)<br>
+[5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
+
 See the steps to deploy and test [sample application](#tap-sample-app). You can refer [Deploy Application documentation](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-getting-started.html) for further details.
 
 Execute following command to see the demo of sample app deployment into Tanzu Application Platform

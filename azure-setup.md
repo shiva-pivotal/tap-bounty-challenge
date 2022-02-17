@@ -1,6 +1,14 @@
 ## Create an AKS Cluster
 Create an AKS cluster. Make sure the Azure CLI is installed. The following commands will log you in and then create a cluster (sized for tap). For additional information on the requirements for TAP, refer to the installation docs.
 
+**[Prerequisites](prereqs.md)**
+
+[1. Create an AKS Cluster](azure-setup.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Sample App](sample-app.md)<br>
+[5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
+
 Login to Azure
 ```
 az login

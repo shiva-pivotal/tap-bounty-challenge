@@ -1,5 +1,13 @@
 
-# Prerequisites
+## Prerequisites
+
+**[Prerequisites](prereqs.md)**
+
+[1. Create an AKS Cluster](azure-setup.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Sample App](sample-app.md)<br>
+[5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
 
 The following software needs to be available in the environment where you will be installing your Tanzu Application Platform on Azure
 - Azure Account with proper permissions to provision AKS cluster

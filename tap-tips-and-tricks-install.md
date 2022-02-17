@@ -1,4 +1,12 @@
-# Tips and Tricks for TAP Install
+## Tips and Tricks for TAP Install
+
+**[Prerequisites](prereqs.md)**
+
+[1. Create an AKS Cluster](azure-setup.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Sample App](sample-app.md)<br>
+[5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
 
 - Extract friendly error messages 
 - Setup DNS

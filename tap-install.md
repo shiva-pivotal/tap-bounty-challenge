@@ -1,7 +1,13 @@
-# Tanzu Application Platform - Install
+## Tanzu Application Platform - Install
 
+**[Prerequisites](prereqs.md)**
 
-<!-- /* cSpell:enable */ -->
+[1. Create an AKS Cluster](azure-setup.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Sample App](sample-app.md)<br>
+[5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
+
 ### Add the Tanzu Application Platform package repository
 
 Execute following commands to add TAP package. 

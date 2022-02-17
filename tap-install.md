@@ -1,5 +1,7 @@
 # Tanzu Application Platform - Install
 
+This is a quickstart quick for TAP on AKS. Call it the "No Nonsense Guide to get up and Running with a TAP Cluster on AKS". It assumes prior knowledge of TAP. Where additional overview information is needed, please refer to the installation docs. This is to quickly get a cluster and establish a repeatable pattern.
+
 ## Prerequisites
 Before deploying VMware Tanzu Application Platform, ensure that the following are set up.
 

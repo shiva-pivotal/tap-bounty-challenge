@@ -69,12 +69,9 @@ tanzu plugin list
   services            Discover Service Types and manage Service Instances (ALPHA)        Standalone             v0.1.1   installed   
 ```
 
-export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
-export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com
-export INSTALL_REGISTRY_USERNAME=<TANZU-NET-USER>
-export INSTALL_REGISTRY_PASSWORD=<TANZU-NET-PASSWORD>
+If you don't, installed the plugins. 
 
-
+```
 cd $HOME
 
 #install tanzu cli v(0.10.0) and plug-ins (linux)
@@ -91,7 +88,9 @@ tanzu plugin install --local cli all
 tanzu plugin list
 
 cd $HOME
+
 ```
+
 
 
 

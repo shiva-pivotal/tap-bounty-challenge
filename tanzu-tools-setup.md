@@ -1,6 +1,14 @@
-# Tanzu Tools Setup
+## Tanzu Tools Setup
 
-### Step 1: Install tanzu cluster essentials 
+**[Prerequisites](prereqs.md)**
+
+[1. Create an AKS Cluster](azure-setup.md)<br>
+[2. Install Tanzu tools](tanzu-tools-setup.md)<br>
+[3. Install TAP](tap-install.md)<br>
+[4. Sample App](sample-app.md)<br>
+[5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
+
+### Install tanzu cluster essentials 
 
 Once you have an empty AKS cluster, you will need to install the essential cluster tools into it. You're basically install the kapp and secrets controller.
 
@@ -10,7 +18,6 @@ Download the cluster-essential tar and install it. Provide following user inputs
 * TANZU-NET-USER 
 * TANZU-NET-PASSWORD
 
-<!-- /* cSpell:disable */ -->
 ```
 #login to kubernetes workload cluster using cluster config
 kubectl config get-contexts

@@ -5,7 +5,7 @@ This is a quickstart quick for TAP on AKS. Call it the "No Nonsense Guide to get
 
 
 ## Overview of the Install Steps
-1. [Create an AKS Cluster](#taks-cluster)
+1. [Create an AKS Cluster](#aks-cluster)
 2. [Setup Tanzu Application Platform Tools](#tanzu-essential)
 3. [Setup Tanzu Application Platform package repository](#tap-package-repo)
 4. [Setup Tanzu Application Platform Install](#tap-full-profile-install)
@@ -59,6 +59,10 @@ Get Credentials
 ```
 az aks get-credentials --resource-group ${AKS_RESOURCE_GROUP} --name ${AKS_CLUSTER_NAME}
 ```
+
+### <a id=tanzu-essential> </a> Step 2: Install tanzu cluster essentials 
+Installing Cluster Essentials must happen on each new cluster. If you previously downloaded it, cd into that direction and run './install.sh`.
+
 
 ### <a id=tanzu-essential> </a> Step 2: Install tanzu cluster essentials and tanzu cli
 

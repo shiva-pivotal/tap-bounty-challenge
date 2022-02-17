@@ -20,9 +20,11 @@ Login to Azure
 az login
 az account set 
   --subscription 0ee6e882-35d9-4b20-9126-XXXXXXXXX
+'''
 
 Check the versions of k8s available and the quotas for your nodes. You may need to request a quota increase if you don’t have enough in a specific family.
 
+'''
 az aks get-versions --location ${AKS_CLUSTER_LOCATION} -o table 
 
 az vm list-usage --location ${AKS_CLUSTER_LOCATION}  -o table

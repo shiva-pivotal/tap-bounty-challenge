@@ -1,6 +1,6 @@
 # Tanzu Tools Setup
 
-### <a id=tanzu-essential> </a> Step 1: Install tanzu cluster essentials 
+### Step 1: Install tanzu cluster essentials 
 
 Once you have an empty AKS cluster, you will need to install the essential cluster tools into it. You're basically install the kapp and secrets controller.
 
@@ -53,7 +53,21 @@ app version 0.45.0
 Succeeded
 ```
 
-Step 2: Install/Validate that plugins have been installed
+### Step 2: Install/Validate that plugins have been installed
+
+Check that you have the tanzu plugins installed:
+```
+tanzu plugin list              
+  NAME                DESCRIPTION                                                        SCOPE       DISCOVERY  VERSION  STATUS         
+  login               Login to the platform                                              Standalone  default    v0.11.1  not installed  
+  management-cluster  Kubernetes management-cluster operations                           Standalone  default    v0.11.1  not installed  
+  package             Tanzu package management                                           Standalone  default    v0.11.1  installed      
+  pinniped-auth       Pinniped authentication operations (usually not directly invoked)  Standalone  default    v0.11.1  not installed  
+  secret              Tanzu secret management                                            Standalone  default    v0.11.1  installed      
+  accelerator         Manage accelerators in a Kubernetes cluster                        Standalone             v1.0.1   installed      
+  apps                Applications on Kubernetes                                         Standalone             v0.4.1   installed      
+  services            Discover Service Types and manage Service Instances (ALPHA)        Standalone             v0.1.1   installed   
+```
 
 export INSTALL_BUNDLE=registry.tanzu.vmware.com/tanzu-cluster-essentials/cluster-essentials-bundle@sha256:82dfaf70656b54dcba0d4def85ccae1578ff27054e7533d08320244af7fb0343
 export INSTALL_REGISTRY_HOSTNAME=registry.tanzu.vmware.com

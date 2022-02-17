@@ -2,7 +2,7 @@
 
 
 <!-- /* cSpell:enable */ -->
-### <a id=tap-package-repo> </a>Step 3: Add the Tanzu Application Platform package repository
+### Add the Tanzu Application Platform package repository
 
 Execute following commands to add TAP package. 
 
@@ -41,7 +41,7 @@ Validate that you can get the package list:
 tanzu package available list --namespace tap-install
 ```
 
-### <a id=tap-full-profile-install> </a>Step 4: Install Tanzu Application Platform full profile
+### Install Tanzu Application Platform full profile
 
 Provide following user inputs to set environments variables into commands and execute them to install build profile
 
@@ -67,7 +67,7 @@ tanzu package installed list -A
 ```
 <!-- /* cSpell:enable */ -->
 
-### <a id=tap-sample-app>Step 5: Deploy Sample application 
+### Deploy Sample application 
 See the steps to deploy and test [sample application](#tap-sample-app). You can refer [Deploy Application documentation](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-getting-started.html) for further details.
 
 Execute following command to see the demo of sample app deployment into Tanzu Application Platform

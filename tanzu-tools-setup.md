@@ -43,7 +43,7 @@ Check that there are two controllers installed:
  secretgen-controller        secretgen-controller-65d5bcf94c-w847l                  1/1     Running   0          27h
 ```
 
-Add kapp to your $PATH and check it:
+Add kapp to your $PATH if it's not already there and check that you have the latest version:
 ```
 sudo cp $HOME/tanzu-cluster-essentials/kapp /usr/local/bin/kapp
 

@@ -60,7 +60,7 @@ Create a basic tap-values.yaml. Here is a sample:
 profile: full
 ceip_policy_disclosed: true # Installation fails if this is set to 'false'
 buildservice:
-  kp_default_repository: "harbor.wesleyreisz.com/tap/build-service"
+  kp_default_repository: "harbor.example-domain.com/tap/build-service"
   kp_default_repository_username: "your-registry-username"
   kp_default_repository_password: "your-registry-username"
   tanzunet_username: "example@vmware.com"
@@ -71,7 +71,7 @@ supply_chain: basic
 
 ootb_supply_chain_basic:
   registry:
-    server: "harbor.wesleyreisz.com"
+    server: "harbor.example-domain.com"
     repository: "workloads/supply-chain"
   gitops:
     ssh_secret: ""
@@ -82,23 +82,23 @@ contour:
       type: LoadBalancer
 
 learningcenter:
-  ingressDomain: "learningcenter.wesleyreisz.com"
+  ingressDomain: "learningcenter.example-domain.com"
 
 tap_gui:
   service_type: ClusterIP
   ingressEnabled: "true"
-  ingressDomain: "tap.wesleyreisz.com"
+  ingressDomain: "tap.example-domain.com"
   app_config:
     app:
-      baseUrl: http://tap-gui.tap.wesleyreisz.com
+      baseUrl: http://tap-gui.tap.example-domain.com
     catalog:
       locations:
         - type: url
           target: https://github.com/wesreisz/tap-blank-catalog/blob/main/catalog-info.yaml
     backend:
-      baseUrl: http://tap-gui.tap-build.wesleyreisz.com
+      baseUrl: http://tap-gui.tap-build.example-domain.com
       cors:
-        origin: http://tap-gui.tap-build.wesleyreisz.com
+        origin: http://tap-gui.tap-build.example-domain.com
 
 metadata_store:
   app_service_type: LoadBalancer # (optional) Defaults to LoadBalancer. Change to NodePort for distributions that don't support LoadBalancer
@@ -109,7 +109,7 @@ grype:
 
 cnrs:
   provider: local
-  domain_name: tap.wesleyreisz.com 
+  domain_name: tap.example-domain.com 
   domain_template: "{{.Name}}.{{.Domain}}"
 
 # e.g. App Accelerator specific values go under its name
@@ -131,9 +131,9 @@ tanzu package installed list -A
 
 Got back and add the domains to your dns provider:
 ```
- tap.wesleyreisz.com
- tap-gui.tap.wesleyreisz.com
- learningcenter.wesleyreisz.com
+ tap.example-domain.com
+ tap-gui.tap.example-domain.com
+ learningcenter.example-domain.com
 ```
 
 NOTE: Learning center and tap require wildcard DNS entries.

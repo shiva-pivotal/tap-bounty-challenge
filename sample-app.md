@@ -83,7 +83,7 @@ dotnet-weatherforecast-config-writer-k964k-pod   Succeeded   0          79m
 
 Test the application by calling the url from above. Make sure to add /weatherforecast for this app to resolved. Otherwise, you'll get a 404.
 ```
-curl http://dotnet-weatherforecast.tap-build.wesleyreisz.com/weatherforecast | jq
+curl http://dotnet-weatherforecast.tap-build.example-domain.com/weatherforecast | jq
 [
   {
     "date": "2022-02-19T16:53:18.6094559+00:00",

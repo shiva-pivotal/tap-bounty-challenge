@@ -75,6 +75,42 @@ tanzu apps workload get ${app_name} -n workload
 
 #get app url 
 kubectl get all -A | grep route.serving.knative
+NAME                                             STATUS      RESTARTS   AGE
+dotnet-weatherforecast-build-1-build-pod         Succeeded   0          81m
+dotnet-weatherforecast-config-writer-k964k-pod   Succeeded   0          79m
 
 curl http://dotnet-weatherforecast.tap-build.wesleyreisz.com/weatherforecast | jq
+[
+  {
+    "date": "2022-02-19T16:53:18.6094559+00:00",
+    "temperatureC": 42,
+    "temperatureF": 107,
+    "summary": "Scorching"
+  },
+  {
+    "date": "2022-02-20T16:53:18.6094829+00:00",
+    "temperatureC": -19,
+    "temperatureF": -2,
+    "summary": "Cool"
+  },
+  {
+    "date": "2022-02-21T16:53:18.6094833+00:00",
+    "temperatureC": 34,
+    "temperatureF": 93,
+    "summary": "Cool"
+  },
+  {
+    "date": "2022-02-22T16:53:18.6094834+00:00",
+    "temperatureC": -8,
+    "temperatureF": 18,
+    "summary": "Sweltering"
+  },
+  {
+    "date": "2022-02-23T16:53:18.6094836+00:00",
+    "temperatureC": 50,
+    "temperatureF": 121,
+    "summary": "Scorching"
+  }
+]
+
 ```

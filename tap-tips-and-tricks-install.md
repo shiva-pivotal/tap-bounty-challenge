@@ -16,7 +16,6 @@
         - Name: *.<ingressdomain>
         - Content: External IP Address from command above ```kubectl get svc -n tanzu-system-ingress```
 - Setup Contour: kubectl get svc -n tanzu-system-ingress
-- Troubleshoot catalog errors
 - Setup GIT-CATALOG-URL
     - Download  tap-gui-yelb-catalog.tgz from Pivnet (https://network.pivotal.io/products/tanzu-application-platform/#/releases/1049494/file_groups/6091)
     - Extract and place in a public Git Repo (i.e. https://github.com/kadourah/tap-install)

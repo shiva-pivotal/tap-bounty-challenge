@@ -10,86 +10,71 @@
 
 See the steps to deploy and test [sample application](#tap-sample-app). You can refer [Deploy Application documentation](https://docs.vmware.com/en/Tanzu-Application-Platform/1.0/tap/GUID-getting-started.html) for further details.
 
-Execute following command to see the demo of sample app deployment into Tanzu Application Platform
+### Scaffold out a DotNet app 
+Create a dotnet application and commit it to a git repository. How you create the app really doesn't matter but make sure that the proj (ie *.csproj) is in the root of the directory. The file is needed for cloudnative buildpacks to build dotnet by default (without additional config). Below is an example of configuring with the dotnet cli. 
+
+Download and install dotnet on you your computer. Follow online docs, to do this.
 
 <!-- /* cSpell:disable */ -->
+
+scaffold out a dotnet application:
 ```
-# login to kubernetes workload build cluster 
-kubectl config get-contexts
-kubectl config use-context <cluster config name>
-
-export app_name=tap-demo
-export git_app_url=https://github.com/sample-accelerators/spring-petclinic
-
-tanzu apps workload delete --all
-
-tanzu apps workload list
-
-#generate work load yml file
-tanzu apps workload create ${app_name} --git-repo ${git_app_url} --git-branch main --type web --label app.kubernetes.io/part-of=${app_name} --yes --dry-run
+dotnet new webapi --no-https -n dotnet-weatherforecast
+```
 
 
-#create work load for app
+### Commit to a repo
+Add this code to a git repo:
+```
+cd dotnet-weatherforecast
+git init
+git remote add origin https://github.com/wesreisz/dotnet-weatherforecast.git
+git add . ** git commit -m "initial commit"
+```
+
+### Add the app to TAPP
+Add dotnet app to TAP
+```
+export app_name=dotnet-weatherforecast
+export app_git_url=https://github.com/wesreisz/dotnet-weatherforecast
+```
+
+Validate the settings are there.
+```
+env | grep app_
+app_name=dotnet-weatherforecast
+app_git_url=https://github.com/wesreisz/dotnet-weatherforecast
+```
+
+Make sure there isn't an existing app of the same name. Delete it if need be,
+```
+tanzu apps workload list -n workload
+tanzu apps workload delete dotnet-weatherforecast -n workload
+```
+
+Create the workload. You can run this command with `--dry-run` first to preview before creating
+```
 tanzu apps workload create ${app_name} \
---git-repo ${git_app_url} \
+--git-repo ${app_git_url} \
 --git-branch main \
---git-tag tap-1.0 \
 --type web \
---label app.kubernetes.io/part-of=${app_name} \
---yes
+--label app.kubernetes.io/part-of=${app_name}  \
+--yes \
+--namespace workload 
+```
 
-#app deployment logs
-tanzu apps workload tail ${app_name} --since 10m --timestamp
+Tail the app deployment logs to watch kpack build your image
+```
+tanzu apps workload tail   -n workload ${app_name} --since 10m --timestamp
+```
 
-#get app workload list
+Check/monitor the status of the apps
+```
 tanzu apps workload list
-
-#get app details
-tanzu apps workload get ${app_name}
-
-#saved deliverables yaml configuration into local directory. check below sample file below 
-kubectl get deliverables ${app_name} -o yaml |  yq 'del(.status)'  | yq 'del(.metadata.ownerReferences)' | yq 'del(.metadata.resourceVersion)' | yq 'del(.metadata.uid)' >  ${app_name}-delivery.yaml"
-
-#sample deliverables 
-##################################################
-apiVersion: carto.run/v1alpha1
-kind: Deliverable
-metadata:
-  creationTimestamp: "2022-02-01T20:19:19Z"
-  generation: 1
-  labels:
-    app.kubernetes.io/component: deliverable
-    app.kubernetes.io/part-of: tap-demo
-    app.tanzu.vmware.com/deliverable-type: web
-    carto.run/cluster-supply-chain-name: source-to-url
-    carto.run/cluster-template-name: deliverable-template
-    carto.run/resource-name: deliverable
-    carto.run/template-kind: ClusterTemplate
-    carto.run/workload-name: tap-demo
-    carto.run/workload-namespace: default
-  name: tap-demo
-  namespace: default
-spec:
-  source:
-    image: tapdemo2.azurecr.io/supply-chain/tap-demo-default-bundle:83c468d4-4fd0-4f3b-9e57-9cdfe57e730a
-
-##################################################################
-
- # login to kubernetes workload run cluster 
-kubectl config get-contexts
-kubectl config use-context <cluster config name>  
-
-#apply app-delivery into run cluster 
-
-kubectl apply -f app-delivery.yaml
-
-#check app status
-kubectl get deliverables ${app_name}
+tanzu apps workload get ${app_name} -n workload
 
 #get app url 
 kubectl get all -A | grep route.serving.knative
 
-#copy  app url and paste into browser to see the sample app
-
+curl http://dotnet-weatherforecast.tap-build.wesleyreisz.com/weatherforecast | jq
 ```
-<!-- /* cSpell:enable */ -->

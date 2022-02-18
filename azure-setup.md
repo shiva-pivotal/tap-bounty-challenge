@@ -49,7 +49,7 @@ az aks create \
  --kubernetes-version ${AKS_CLUSTER_VERSION} 
 ```
 
- ** NOTE: Standard_D4_v3 will give you 4 vCPUs and 16GB of memory (or with 5 nodes a total of 20 vCPUs and 80GB of RAM on the cluster). **
+ **NOTE: Standard_D4_v3 will give you 4 vCPUs and 16GB of memory (or with 5 nodes a total of 20 vCPUs and 80GB of RAM on the cluster).**
 
 Get Credentials
 ```

@@ -8,17 +8,21 @@
 [4. Sample App](sample-app.md)<br>
 [5. Tips and Tricks](tap-tips-and-tricks-install.md)<br>
 
-- Extract friendly error messages 
-- Setup DNS
+- Extract friendly error messages : ```kubectl describe pkgi <package name> -n tap-install ``` for example ```kubectl describe pkgi grype -n tap-install ```
+- Setup DNS:
+    - Extract the external IP from ```kubectl get svc -n tanzu-system-ingress```
+    - Add DNS Record :
+        - Type : A Record
+        - Name: *.<ingressdomain>
+        - Content: External IP Address from command above ```kubectl get svc -n tanzu-system-ingress```
 - Setup Contour: kubectl get svc -n tanzu-system-ingress
-- Troubleshoot catalog errors
 - Setup GIT-CATALOG-URL
- - Download  tap-gui-yelb-catalog.tgz
- - Extract and place in a public Git Repo (i.e. https://github.com/kadourah/tap-install)
- - Update tap-values to
- ```
-     catalog:
-      locations:
-        - type: url
-          target: GIT-CATALOG-URL/catalog-info.yaml
- ```
+    - Download  tap-gui-yelb-catalog.tgz from Pivnet (https://network.pivotal.io/products/tanzu-application-platform/#/releases/1049494/file_groups/6091)
+    - Extract and place in a public Git Repo (i.e. https://github.com/kadourah/tap-install)
+    - Update tap-values to
+         ```
+             catalog:
+              locations:
+                - type: url
+                  target: GIT-CATALOG-URL/catalog-info.yaml
+         ```

@@ -13,7 +13,7 @@
     - Extract the external IP from ```kubectl get svc -n tanzu-system-ingress```
     - Add DNS Record :
         - Type : A Record
-        - Name: *.<ingressdomain>
+        - Name: *.ingressdomain
         - Content: External IP Address from command above ```kubectl get svc -n tanzu-system-ingress```
 - Setup Contour: kubectl get svc -n tanzu-system-ingress
 - Setup GIT-CATALOG-URL

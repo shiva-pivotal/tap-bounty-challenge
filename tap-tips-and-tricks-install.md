@@ -26,3 +26,10 @@
                 - type: url
                   target: GIT-CATALOG-URL/catalog-info.yaml
          ```
+- Troubleshood training center not loading, or stuck on loading 
+ - Access http://learning-center-guided.learningcenter.<tap-domain> then click on "Workshop building tutorial"
+ - if it's stuck on loading, try the following:
+ - ```kubectl delete pod -l deployment=learningcenter-operator -n learningcenter```
+ - ```kubectl delete trainingportals  learning-center-guide```
+ - Kapp controller should recreate the trainingportal after some minutes (Less than 10 minutes)
+ - Try again

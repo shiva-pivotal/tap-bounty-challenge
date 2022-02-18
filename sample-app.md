@@ -29,7 +29,7 @@ Add this code to a git repo:
 cd dotnet-weatherforecast
 git init
 git remote add origin https://github.com/wesreisz/dotnet-weatherforecast.git
-git add . ** git commit -m "initial commit"
+git add . && git commit -m "initial commit"
 ```
 
 ### Add the app to TAPP

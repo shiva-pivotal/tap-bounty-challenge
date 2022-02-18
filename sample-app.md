@@ -32,7 +32,7 @@ git remote add origin https://github.com/wesreisz/dotnet-weatherforecast.git
 git add . && git commit -m "initial commit"
 ```
 
-### Add the app to TAPP
+### Add the app to TAP
 Add dotnet app to TAP
 ```
 export app_name=dotnet-weatherforecast

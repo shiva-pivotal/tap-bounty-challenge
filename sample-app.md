@@ -78,7 +78,11 @@ kubectl get all -A | grep route.serving.knative
 NAME                                             STATUS      RESTARTS   AGE
 dotnet-weatherforecast-build-1-build-pod         Succeeded   0          81m
 dotnet-weatherforecast-config-writer-k964k-pod   Succeeded   0          79m
+```
 
+
+Test the application by calling the url from above. Make sure to add /weatherforecast for this app to resolved. Otherwise, you'll get a 404.
+```
 curl http://dotnet-weatherforecast.tap-build.wesleyreisz.com/weatherforecast | jq
 [
   {

@@ -36,6 +36,8 @@ mkdir $HOME/tanzu-cluster-essentials
 tar -xvf tanzu-cluster-essentials-darwin-amd64-1.0.0.tgz -C $HOME/tanzu-cluster-essentials
 ```
 
+**Note: Something interesting. If you're familiar with TMC (when you attach a previously created cluster), several components are installed on the clusters. Things likes like pinniped for authentication or gatekeeper for OPA policy integration. In addition, kapp and secretgen-controller are installed. Exactly like this below script does. kapp is used to install apps and secretgen-controller is used for secret management.** 
+
 If you already have it downloaded, just install:
 ```
 cd $HOME/tanzu-cluster-essentials
